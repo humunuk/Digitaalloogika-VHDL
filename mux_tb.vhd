@@ -43,7 +43,7 @@ variable counter :integer;
       ContSigTB <= '0';
       wait for 10 ns;
 	  assert OutSigBehTB = BInTB report "OutSigBehTB /= BInTB" severity note; --The assert statement tests the boolean condition. If this is false, it outputs a message containing the report string to the simulator screen.
-	  report "OutSigBehTB";
+      assert OutSigFlowTB = BInTB report "OutSigFlowTB /= BInTB" severity note;
       ContSigTB <= '1';
       wait for 10 ns;
 

@@ -40,7 +40,7 @@ DISP_MUX: process ( A_IN, B_IN, CONT_SIG ) --sensitivity list (protsess läheb ai
     end if;
 end process DISP_MUX;
 
-OUT_SIG_FLOW  <= (A_IN AND NOT (CONT_SIG)) OR (B_IN AND (CONT_SIG));  
+OUT_SIG_FLOW  <= (A_IN AND CONT_SIG) OR (B_IN AND NOT (CONT_SIG));  
 OUT_SIG_STRUCT <= '1';
 
 end RTL;
