@@ -1,4 +1,4 @@
-------------------------------------------------------------------------------
+ ------------------------------------------------------------------------------
 --  File: mux_tb.vhd
 ------------------------------------------------------------------------------
 --Multiplexor testbench
@@ -31,13 +31,19 @@ Mux_comp: MUX port map (AInTB, BInTB, ContSigTB, OutSigBehTB, OutSigFlowTB, OutS
  
 --Stimulus process
 Stimulus: process
+--Processi ja begini vahele saab deklareerida abi muutujaid.
+variable counter :integer;
    begin
+   --Seni kaua kuni A on 1 bitine on ülakoma, kui tegemist vektoriga, siis jutumärgid! (suur NB)
+   --Signaali väärtustatakse <=
+   --Muutujat väärtustatakse :=
+      counter := 100;
       AInTB     <= '0'; 
       BInTB     <= '1';
       ContSigTB <= '0';
       wait for 10 ns;
 	  assert OutSigBehTB = BInTB report "OutSigBehTB /= BInTB" severity note; --The assert statement tests the boolean condition. If this is false, it outputs a message containing the report string to the simulator screen.
-	  
+	  report "OutSigBehTB";
       ContSigTB <= '1';
       wait for 10 ns;
 
@@ -47,6 +53,11 @@ Stimulus: process
       wait for 10 ns;
       
       ContSigTB <= '1';
+      wait for 10 ns;
+      
+      AInTB  <= '1'; 
+      BInTB  <= '0';
+      ContSigTB  <= 'U';
       wait for 10 ns;
 
       wait;  --Suspend

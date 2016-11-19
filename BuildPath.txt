@@ -67,4 +67,5 @@
 # toplevel WORK.LEON3MP(RTL)
 # toplevel LEON3S
 
-
+# Testpingi entity nimi, ette läheb top level. NB! Nimi PEAB OLEMA SUURE TÄHTEDEGA
+toplevel MUXTESTBENCH
